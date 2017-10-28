@@ -2,7 +2,9 @@
 
 <%= form_tag '/collages', method: :get do %>
   <%= text_field_tag :search, params[:search], placeholder: 'search' %>
-<% end %>
+<% end %><br>
+
+<%= will_paginate @collages %><br>
 
 <table>
   <tr>

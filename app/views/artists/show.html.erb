@@ -1,5 +1,7 @@
 <h1><%= @artist.Name %></h1>
 
+<%= will_paginate @torrent_groups %>
+
 <table>
   <tr>
     <th>Name</th>
@@ -9,7 +11,7 @@
     <th>Tags</th>
     <th>ReleaseType</th>
   </tr>
-<% @artist.torrent_groups.each do |group| %>
+<% @torrent_groups.each do |group| %>
   <tr>
     <td><%= group.Name %></td>
     <td><%= group.Year %></td>
@@ -19,3 +21,6 @@
     <td><%= group.release_type_name %></td>
   </tr>
 <% end %>
+</table>
+
+<%= will_paginate @torrent_groups %>
