@@ -32,3 +32,8 @@ td {
    border-bottom: 1px solid #ddd;
    padding: .5em;
 }
+
+a {color:blue;}      /* unvisited link */
+a:visited {color:blue;}  /* visited link */
+a:hover {color:blue;}  /* mouse over link */
+a:active {color:blue;}  /* selected link */

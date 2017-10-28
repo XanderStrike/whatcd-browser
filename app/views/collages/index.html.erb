@@ -10,9 +10,9 @@
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Num Torrents</th>
-    <th>Tag List</th>
+    <th><%= sortable_header('Name') %></th>
+    <th><%= sortable_header('Torrents', 'NumTorrents') %></th>
+    <th><%= sortable_header('TagList') %></th>
   </tr>
   <% @collages.each do |collage| %>
     <tr>
