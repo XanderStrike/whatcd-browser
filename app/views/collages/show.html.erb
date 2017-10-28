@@ -9,7 +9,7 @@
   </tr>
   <% @collage.torrents.each do |torrent| %>
     <tr>
-      <td><%= torrent.first %></td>
+      <td><%= link_to torrent.first, "/artists/#{torrent[1]}" %></td>
       <td><%= torrent.last %></td>
     </tr>
   <% end %>
