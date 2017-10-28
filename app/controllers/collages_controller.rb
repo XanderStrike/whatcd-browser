@@ -1,10 +1,6 @@
 class CollagesController < ApplicationController
   def index
-    if params[:search].present?
-      @collages = Collage.where("Name like ?", "%#{params[:search]}%").paginate(page: params[:page], per_page: 30)
-    else
-      @collages = Collage.paginate(page: params[:page], per_page: 50)
-    end
+    @collages = Collage.where("Name like ? and TagList like ?", "%#{params[:search]}%", "%#{params[:tag]}%").paginate(page: params[:page], per_page: 30)
   end
 
   def show

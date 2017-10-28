@@ -2,6 +2,8 @@
 
 <%= form_tag '/collages', method: :get do %>
   <%= text_field_tag :search, params[:search], placeholder: 'search' %>
+  <%= text_field_tag :tag, params[:tag], placeholder: 'tag' %>
+  <%= submit_tag 'Filter' %>
 <% end %><br>
 
 <%= will_paginate @collages %><br>
