@@ -19,7 +19,7 @@ default: &default
 
 development:
   <<: *default
-  database: whatcd_development
+  database: whatcd
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
