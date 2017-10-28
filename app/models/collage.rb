@@ -13,6 +13,6 @@
 
 class Collage < ActiveRecord::Base
   def torrents
-    ActiveRecord::Base.connection.execute("select a.Name, tg.Name from collages c join collages_torrents ct on c.ID = ct.CollageID join torrents_group tg on ct.GroupID = tg.ID join artists_group a on tg.ArtistID = a.ArtistID where c.ID = #{self.ID}").to_a
+    ActiveRecord::Base.connection.execute("select a.Name, a.ArtistID, tg.Name from collages c join collages_torrents ct on c.ID = ct.CollageID join torrents_group tg on ct.GroupID = tg.ID join artists_group a on tg.ArtistID = a.ArtistID where c.ID = #{self.ID}").to_a
   end
 end

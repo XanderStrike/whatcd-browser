@@ -14,9 +14,20 @@
 #  Time            :datetime         default(NULL), not null
 #
 
-class TorrentGroup < ActiveRecord::Base
+class TorrentGroup < ApplicationRecord
   self.table_name = 'torrents_group'
 
   has_many :torrents, foreign_key: 'GroupID'
-  has_one :artist_alias, foreign_key: 'ArtistID'
+
+  def release_type_name
+    { '1' => 'Album',
+      '5' => 'Ep',
+      '9' => 'Single',
+      '23' => 'Demo',
+      '6' => 'Anthology',
+      '7' => 'Compilation',
+      '3' => 'Soundtrack',
+      '11' => 'Live Album',
+      '13' => 'Remix' }[self.ReleaseType.to_s]
+  end
 end

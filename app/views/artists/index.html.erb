@@ -1,2 +1,18 @@
-<h1>Artists#index</h1>
-<p>Find me in app/views/artists/index.html.erb</p>
+<h1>Artists</h1>
+
+<%= form_tag '/artists', method: :get do %>
+  <%= text_field_tag :search, params[:search], placeholder: 'search' %>
+<% end %>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <% @artists.each do |artist| %>
+    <tr>
+      <td><%= link_to artist.Name, "/artists/#{artist.ArtistID}" %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= will_paginate @artists %>

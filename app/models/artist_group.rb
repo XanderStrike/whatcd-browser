@@ -8,4 +8,6 @@
 
 class ArtistGroup < ActiveRecord::Base
   self.table_name = 'artists_group'
+
+  has_many :torrent_groups, foreign_key: 'ArtistID'
 end

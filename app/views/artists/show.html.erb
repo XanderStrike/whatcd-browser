@@ -1,2 +1,21 @@
-<h1>Artists#show</h1>
-<p>Find me in app/views/artists/show.html.erb</p>
+<h1><%= @artist.Name %></h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Year</th>
+    <th>CatalogueNumber</th>
+    <th>RecordLabel</th>
+    <th>Tags</th>
+    <th>ReleaseType</th>
+  </tr>
+<% @artist.torrent_groups.each do |group| %>
+  <tr>
+    <td><%= group.Name %></td>
+    <td><%= group.Year %></td>
+    <td><%= group.CatalogueNumber %></td>
+    <td><%= group.RecordLabel %></td>
+    <td><%= group.TagList %></td>
+    <td><%= group.release_type_name %></td>
+  </tr>
+<% end %>
