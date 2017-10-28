@@ -1,0 +1,16 @@
+<h1><%= @collage.Name %></h1>
+
+<b>Tags:</b> <%= @collage.TagList %>
+
+<table>
+  <tr>
+    <th>Artist</th>
+    <th>Group Name</th>
+  </tr>
+  <% @collage.torrents.each do |torrent| %>
+    <tr>
+      <td><%= torrent.first %></td>
+      <td><%= torrent.last %></td>
+    </tr>
+  <% end %>
+</table>

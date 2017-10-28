@@ -1,0 +1,23 @@
+<h1>Collages</h1>
+
+
+<%= form_tag '/collages', method: :get do %>
+  <%= text_field_tag :search, params[:search], placeholder: 'search' %>
+<% end %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Num Torrents</th>
+    <th>Tag List</th>
+  </tr>
+  <% @collages.each do |collage| %>
+    <tr>
+      <td><%= link_to collage.Name, "/collages/#{collage.ID}" %></td>
+      <td><%= collage.NumTorrents %></td>
+      <td><%= collage.TagList %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= will_paginate @collages %>

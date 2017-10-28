@@ -10,4 +10,6 @@
 
 class ArtistAlias < ActiveRecord::Base
   self.table_name = 'artists_alias'
+
+  has_many :torrent_groups, foreign_key: 'ArtistID'
 end

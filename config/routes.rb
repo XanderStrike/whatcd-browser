@@ -1,3 +1,8 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'collages', to: 'collages#index'
+  get 'collages/:id', to: 'collages#show'
+
+  get 'artists/index'
+
+  get 'artists/show'
 end
