@@ -14,6 +14,23 @@
   </tr>
 </table>
 
+<select class="js-type-filter" style="float:right">
+  <option value="0" selected>All Releases</option>
+  <option value="1">Albums</option>
+  <option value="3">Soundtracks</option>
+  <option value="5">EPs</option>
+  <option value="6">Anthologies</option>
+  <option value="7">Compilations</option>
+  <option value="9">Singles</option>
+  <option value="11">Live albums</option>
+  <option value="13">Remixs</option>
+  <option value="14">Bootlegs</option>
+  <option value="15">Interviews</option>
+  <option value="16">Mixtapes</option>
+  <option value="21">Unknowns</option>
+  <option value="23">Demos</option>
+</select>
+
 <table>
   <tr>
     <th><%= sortable_header('Name') %></th>
@@ -24,7 +41,7 @@
     <th><%= sortable_header('ReleaseType') %></th>
   </tr>
 <% @torrent_groups.each do |group| %>
-  <tr>
+  <tr class="js-release js-release-type-<%= group.ReleaseType %>">
     <td><%= link_to group.Name, "/groups/#{group.ID}" %></td>
     <td><%= group.Year %></td>
     <td><%= link_to_discogs group.CatalogueNumber %></td>
@@ -53,5 +70,22 @@
     console.log(info);
   });
   <% rescue; end %>
+
+  function do_filters() {
+    var rows = $('.js-release');
+    var type = $('.js-type-filter').val();
+    rows.each(function (index) {
+      title = $(this).children(".js-title").html()
+      if (type == '0' || type == undefined || $(this).hasClass("js-release-type-" + type)) {
+        $(this).show();
+      } else {
+        $(this).hide();
+      }
+    });
+  }
+
+  $('.js-type-filter').change(function() {
+    do_filters();
+  })
 </script>
 <% end %>

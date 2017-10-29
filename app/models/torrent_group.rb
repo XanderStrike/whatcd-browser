@@ -38,7 +38,8 @@ class TorrentGroup < ApplicationRecord
       14 => 'Bootleg',
       15 => 'Interview',
       16 => 'Mixtape',
-      21 => 'Unknown'
+      21 => 'Unknown',
+      23 => 'Demo'
     }[self.ReleaseType]
   end
 end
