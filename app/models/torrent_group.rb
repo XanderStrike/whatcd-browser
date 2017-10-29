@@ -21,14 +21,19 @@ class TorrentGroup < ApplicationRecord
   belongs_to :artist_group, foreign_key: 'ArtistID'
 
   def release_type_name
-    { '1' => 'Album',
-      '5' => 'Ep',
-      '9' => 'Single',
-      '23' => 'Demo',
-      '6' => 'Anthology',
-      '7' => 'Compilation',
-      '3' => 'Soundtrack',
-      '11' => 'Live Album',
-      '13' => 'Remix' }[self.ReleaseType.to_s]
+    {
+      1 => 'Album',
+      3 => 'Soundtrack',
+      5 => 'EP',
+      6 => 'Anthology',
+      7 => 'Compilation',
+      9 => 'Single',
+      11 => 'Live album',
+      13 => 'Remix',
+      14 => 'Bootleg',
+      15 => 'Interview',
+      16 => 'Mixtape',
+      21 => 'Unknown'
+    }[self.ReleaseType]
   end
 end
