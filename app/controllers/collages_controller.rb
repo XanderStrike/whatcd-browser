@@ -9,4 +9,8 @@ class CollagesController < ApplicationController
     sort = params[:sort] || 'a.Name asc'
     @torrents = @collage.torrents(sort)
   end
+
+  def random
+    redirect_to action: :show, id: Collage.random.ID
+  end
 end

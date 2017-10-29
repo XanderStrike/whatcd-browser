@@ -16,4 +16,9 @@ class ArtistGroup < ActiveRecord::Base
   def similar
     ActiveRecord::Base.connection.execute("select sa.Name, s.SimilarID from artists_group a join artists_similar s on s.ArtistID = a.ArtistID join artists_group sa on sa.ArtistID = s.SimilarID  where a.ArtistID = #{self.ArtistID}").to_a
   end
+
+  def self.random
+    total_rows = 885304 # this will never change
+    ArtistGroup.offset(rand(total_rows)).limit(1).first
+  end
 end

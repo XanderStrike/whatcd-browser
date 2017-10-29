@@ -19,4 +19,9 @@ class Collage < ActiveRecord::Base
   def category
     ['Personal','Theme','Genre introduction','Discography','Label','Staff picks','Charts','Artists'][self.CategoryID]
   end
+
+  def self.random
+    total_rows = 26761 # this will never change
+    Collage.offset(rand(total_rows)).limit(1).first
+  end
 end
