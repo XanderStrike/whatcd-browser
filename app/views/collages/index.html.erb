@@ -22,7 +22,7 @@
       <td><%= collage.NumTorrents %></td>
       <td><%= collage.TagList %></td>
       <td><%= collage.category %></td>
-      <td><%= collage.updated.present? ? time_ago_in_words(collage.updated) : nil %></td>
+      <td><%= collage.updated.present? ? "#{time_ago_in_words(collage.updated)} ago" : nil %></td>
     </tr>
   <% end %>
 </table>
