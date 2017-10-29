@@ -14,6 +14,7 @@
     <th><%= sortable_header('Torrents', 'NumTorrents') %></th>
     <th><%= sortable_header('TagList') %></th>
     <th><%= sortable_header('Category', 'CategoryID') %></th>
+    <th><%= sortable_header('Last&nbsp;Updated'.html_safe, 'updated') %></th>
   </tr>
   <% @collages.each do |collage| %>
     <tr>
@@ -21,6 +22,7 @@
       <td><%= collage.NumTorrents %></td>
       <td><%= collage.TagList %></td>
       <td><%= collage.category %></td>
+      <td><%= collage.updated.present? ? time_ago_in_words(collage.updated) : nil %></td>
     </tr>
   <% end %>
 </table>

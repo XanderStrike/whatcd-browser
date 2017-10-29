@@ -26,7 +26,7 @@
     <th><%= sortable_header('Encoding') %></th>
     <th><%= sortable_header('Size') %></th>
     <th><%= sortable_header('FilePath') %></th>
-    <th><%= sortable_header('Time') %></th>
+    <th><%= sortable_header('Uploaded', 'Time') %></th>
   </tr>
 <% @torrents.each do |torrent| %>
   <tr>
@@ -35,7 +35,7 @@
     <td><%= torrent.Encoding %></td>
     <td><%= torrent.Size %></td>
     <td><%= torrent.FilePath %></td>
-    <td><%= torrent.Time %></td>
+    <td><%= time_ago_in_words(torrent.Time) %></td>
   </tr>
 <% end %>
 </table>
