@@ -7,6 +7,6 @@ class ArtistsController < ApplicationController
   def show
     @artist = ArtistGroup.find(params[:id])
     sort = params[:sort] || 'Name asc'
-    @torrent_groups = @artist.torrent_groups.order(sort).paginate(page: params[:page], per_page: 50)
+    @torrent_groups = @artist.torrent_groups(sort)
   end
 end

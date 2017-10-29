@@ -6,7 +6,7 @@
       <img class="js-image" style="max-width: 300px">
     </td>
     <td>
-      <b>Artist:</b> <%= link_to @group.artist_group&.Name, "/artists/#{@group.artist_group&.ArtistID}" %><br>
+      <b>Artist:</b> <%= link_to @group.artist&.Name, "/artists/#{@group.artist&.ArtistID}" %><br>
       <% ['Year','RecordLabel','ReleaseType','TagList'].each do |attr| %>
         <b><%= attr %>:</b> <%= @group.send(attr) %><br>
       <% end %>
@@ -49,7 +49,7 @@
   }
 
   <% begin %>
-  $.getJSON('http://ws.audioscrobbler.com/2.0/?method=album.getInfo&artist=<%= @group.artist_group.Name %>&album=<%= @group.Name %>&api_key=a0cdf76d44c313ba809c1f1afb312240&format=json', function(data) {
+  $.getJSON('http://ws.audioscrobbler.com/2.0/?method=album.getInfo&artist=<%= @group.artist.Name %>&album=<%= @group.Name %>&api_key=a0cdf76d44c313ba809c1f1afb312240&format=json', function(data) {
     var info = data.album
     $('.js-image').attr('src', info.image[4]['#text'])
     $('.js-read-more').show();

@@ -19,6 +19,11 @@ class TorrentGroup < ApplicationRecord
 
   has_many :torrents, foreign_key: 'GroupID'
   belongs_to :artist_group, foreign_key: 'ArtistID'
+  has_many :torrent_artists, foreign_key: 'GroupID'
+
+  def artist
+    torrent_artists.where(importance: 1).first.artist_group
+  end
 
   def release_type_name
     {

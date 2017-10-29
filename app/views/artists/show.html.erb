@@ -1,3 +1,5 @@
+<a href="/artists">Artists</a>
+
 <h1><%= @artist.Name %></h1>
 
 <table>
@@ -11,8 +13,6 @@
     </td>
   </tr>
 </table>
-
-<%= will_paginate @torrent_groups %>
 
 <table>
   <tr>
@@ -34,8 +34,6 @@
   </tr>
 <% end %>
 </table>
-
-<%= will_paginate @torrent_groups %>
 
 <% content_for :javascript do %>
 <script>

@@ -9,7 +9,9 @@
 class ArtistGroup < ActiveRecord::Base
   self.table_name = 'artists_group'
 
-  has_many :torrent_groups, foreign_key: 'ArtistID'
+  def torrent_groups(order)
+    TorrentGroup.find_by_sql("select * from torrents_group tg join torrents_artists ta on ta.ArtistID = #{self.ArtistID} and ta.GroupID = tg.id where tg.ArtistID = #{self.ArtistID} or ta.ArtistID = #{self.ArtistID} order by #{order}").uniq
+  end
 
   def similar
     ActiveRecord::Base.connection.execute("select sa.Name, s.SimilarID from artists_group a join artists_similar s on s.ArtistID = a.ArtistID join artists_group sa on sa.ArtistID = s.SimilarID  where a.ArtistID = #{self.ArtistID}").to_a
