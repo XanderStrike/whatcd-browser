@@ -6,5 +6,7 @@ class CollagesController < ApplicationController
 
   def show
     @collage = Collage.find(params[:id])
+    sort = params[:sort] || 'a.Name asc'
+    @torrents = @collage.torrents(sort)
   end
 end

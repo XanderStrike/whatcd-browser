@@ -4,10 +4,10 @@
 
 <table>
   <tr>
-    <th>Artist</th>
-    <th>Group Name</th>
+    <th><%= sortable_header('Artist', 'a.Name') %></th>
+    <th><%= sortable_header('Group Name', 'tg.Name') %></th>
   </tr>
-  <% @collage.torrents.each do |torrent| %>
+  <% @torrents.each do |torrent| %>
     <tr>
       <td><%= link_to torrent.first, "/artists/#{torrent[1]}" %></td>
       <td><%= torrent.last %></td>
