@@ -4,12 +4,12 @@
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Year</th>
-    <th>CatalogueNumber</th>
-    <th>RecordLabel</th>
-    <th>Tags</th>
-    <th>ReleaseType</th>
+    <th><%= sortable_header('Name') %></th>
+    <th><%= sortable_header('Year') %></th>
+    <th><%= sortable_header('CatalogueNumber') %></th>
+    <th><%= sortable_header('RecordLabel') %></th>
+    <th><%= sortable_header('Tags', 'TagList') %></th>
+    <th><%= sortable_header('ReleaseType') %></th>
   </tr>
 <% @torrent_groups.each do |group| %>
   <tr>
