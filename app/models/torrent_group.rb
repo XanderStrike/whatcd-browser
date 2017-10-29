@@ -18,6 +18,7 @@ class TorrentGroup < ApplicationRecord
   self.table_name = 'torrents_group'
 
   has_many :torrents, foreign_key: 'GroupID'
+  belongs_to :artist_group, foreign_key: 'ArtistID'
 
   def release_type_name
     { '1' => 'Album',

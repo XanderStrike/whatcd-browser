@@ -1,9 +1,20 @@
 <h1><%= @group.Name %></h1>
 
-<% ['Year','RecordLabel','ReleaseType','TagList'].each do |attr| %>
-  <b><%= attr %>:</b> <%= @group.send(attr) %><br>
-<% end %>
-<b>CatalogeNumber:</b> <%= link_to_discogs(@group.CatalogueNumber) %><br>
+<table>
+  <tr>
+    <td>
+      <img class="js-image" style="max-width: 300px">
+    </td>
+    <td>
+      <b>Artist:</b> <%= link_to @group.artist_group&.Name, "/artists/#{@group.artist_group&.ArtistID}" %><br>
+      <% ['Year','RecordLabel','ReleaseType','TagList'].each do |attr| %>
+        <b><%= attr %>:</b> <%= @group.send(attr) %><br>
+      <% end %>
+      <b>CatalogeNumber:</b> <%= link_to_discogs(@group.CatalogueNumber) %><br>
+      <a class="js-read-more" style="display: none">Read more on Last.fm</a>
+    </td>
+  </tr>
+</table>
 
 <br>
 <%= will_paginate @torrents %>
@@ -30,3 +41,21 @@
 </table>
 
 <%= will_paginate @torrents %>
+
+<% content_for :javascript do %>
+<script>
+  function truncateString(str, length) {
+    return str.length > length ? str.substring(0, length - 3) + '...' : str
+  }
+
+  <% begin %>
+  $.getJSON('http://ws.audioscrobbler.com/2.0/?method=album.getInfo&artist=<%= @group.artist_group.Name %>&album=<%= @group.Name %>&api_key=a0cdf76d44c313ba809c1f1afb312240&format=json', function(data) {
+    var info = data.album
+    $('.js-image').attr('src', info.image[4]['#text'])
+    $('.js-read-more').show();
+    $('.js-read-more').attr('href', info.url);
+    console.log(info);
+  });
+  <% rescue ; end %>
+</script>
+<% end %>

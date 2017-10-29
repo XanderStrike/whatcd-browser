@@ -43,6 +43,7 @@
     return str.length > length ? str.substring(0, length - 3) + '...' : str
   }
 
+  <% begin %>
   $.getJSON('http://ws.audioscrobbler.com/2.0/?method=artist.getInfo&artist=<%= @artist.Name %>&api_key=a0cdf76d44c313ba809c1f1afb312240&format=json', function(data) {
     var info = data.artist
     $('.js-image').attr('src', info.image[4]['#text'])
@@ -53,5 +54,6 @@
     }
     console.log(info);
   });
+  <% rescue; end %>
 </script>
 <% end %>
