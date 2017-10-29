@@ -15,4 +15,8 @@ module ApplicationHelper
 
     link_to "#{title}&nbsp;#{sorted_by_this ? sort_direction : nil }".html_safe, params.permit!.merge(sort: new_sort)
   end
+
+  def link_to_discogs(catalogue_number)
+    link_to catalogue_number, "https://www.discogs.com/search/?q=#{catalogue_number}&type=all", target: :blank
+  end
 end

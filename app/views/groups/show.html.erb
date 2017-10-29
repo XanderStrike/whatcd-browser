@@ -1,8 +1,9 @@
 <h1><%= @group.Name %></h1>
 
-<% ['Year','CatalogueNumber','RecordLabel','ReleaseType','TagList'].each do |attr| %>
+<% ['Year','RecordLabel','ReleaseType','TagList'].each do |attr| %>
   <b><%= attr %>:</b> <%= @group.send(attr) %><br>
 <% end %>
+<b>CatalogeNumber:</b> <%= link_to_discogs(@group.CatalogueNumber) %><br>
 
 <br>
 <%= will_paginate @torrents %>

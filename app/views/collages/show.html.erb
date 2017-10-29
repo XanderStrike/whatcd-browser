@@ -14,7 +14,7 @@
     <tr>
       <td><%= link_to torrent.first, "/artists/#{torrent[1]}" %></td>
       <td><%= link_to torrent.last, "/groups/#{torrent[2]}" %></td>
-      <td><%= torrent[3] %></td>
+      <td><%= link_to_discogs torrent[3] %></td>
       <td><%= torrent[4] %></td>
       <td><%= torrent[5] %></td>
     </tr>
