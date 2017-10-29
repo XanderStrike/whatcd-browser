@@ -1,7 +1,12 @@
 <h1>Groups</h1>
 
+<p style='color: red'>You found the secret groups index! There's a reason it's not linked, this page hits the server very hard. Use sparingly, if at all please.</p>
+
 <%= form_tag '/groups', method: :get do %>
-  <%= text_field_tag :search, params[:search], placeholder: 'search' %>
+  <%= text_field_tag :search, params[:search], placeholder: 'name' %>
+  <%= text_field_tag :label, params[:label], placeholder: 'label' %>
+  <%= text_field_tag :tag, params[:tag], placeholder: 'tag' %>
+  <%= submit_tag 'Filter' %>
 <% end %><br>
 
 <%= will_paginate @groups %><br><br>
@@ -9,10 +14,22 @@
 <table>
   <tr>
     <th><%= sortable_header('Name') %></th>
+    <th><%= sortable_header('Year') %></th>
+    <th><%= sortable_header('CatalogueNumber') %></th>
+    <th><%= sortable_header('RecordLabel') %></th>
+    <th><%= sortable_header('ReleaseType') %></th>
+    <th><%= sortable_header('TagList') %></th>
+    <th><%= sortable_header('Uploaded', 'Time') %></th>
   </tr>
   <% @groups.each do |group| %>
     <tr>
       <td><%= link_to group.Name, "/groups/#{group.ID}" %></td>
+      <td><%= group.Year %></td>
+      <td><%= link_to_discogs(group.CatalogueNumber) %></td>
+      <td><%= group.RecordLabel %></td>
+      <td><%= group.release_type_name %></td>
+      <td><%= group.TagList %></td>
+      <td><%= time_ago_in_words(group.Time) %></td>
     </tr>
   <% end %>
 </table>
