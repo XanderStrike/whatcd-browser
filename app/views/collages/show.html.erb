@@ -10,7 +10,7 @@
   <% @torrents.each do |torrent| %>
     <tr>
       <td><%= link_to torrent.first, "/artists/#{torrent[1]}" %></td>
-      <td><%= torrent.last %></td>
+      <td><%= link_to torrent.last, "/groups/#{torrent[2]}" %></td>
     </tr>
   <% end %>
 </table>

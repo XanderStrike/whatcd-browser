@@ -1,0 +1,31 @@
+<h1><%= @group.Name %></h1>
+
+<% ['Year','CatalogueNumber','RecordLabel','ReleaseType','TagList'].each do |attr| %>
+  <b><%= attr %>:</b> <%= @group.send(attr) %><br>
+<% end %>
+
+<br>
+<%= will_paginate @torrents %>
+
+<table>
+  <tr>
+    <th><%= sortable_header('Media') %></th>
+    <th><%= sortable_header('Format') %></th>
+    <th><%= sortable_header('Encoding') %></th>
+    <th><%= sortable_header('Size') %></th>
+    <th><%= sortable_header('FilePath') %></th>
+    <th><%= sortable_header('Time') %></th>
+  </tr>
+<% @torrents.each do |torrent| %>
+  <tr>
+    <td><%= torrent.Media %></td>
+    <td><%= torrent.Format %></td>
+    <td><%= torrent.Encoding %></td>
+    <td><%= torrent.Size %></td>
+    <td><%= torrent.FilePath %></td>
+    <td><%= torrent.Time %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate @torrents %>

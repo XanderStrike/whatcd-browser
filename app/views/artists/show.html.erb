@@ -13,7 +13,7 @@
   </tr>
 <% @torrent_groups.each do |group| %>
   <tr>
-    <td><%= group.Name %></td>
+    <td><%= link_to group.Name, "/groups/#{group.ID}" %></td>
     <td><%= group.Year %></td>
     <td><%= group.CatalogueNumber %></td>
     <td><%= group.RecordLabel %></td>

@@ -1,0 +1,20 @@
+<h1>Groups</h1>
+
+<%= form_tag '/groups', method: :get do %>
+  <%= text_field_tag :search, params[:search], placeholder: 'search' %>
+<% end %><br>
+
+<%= will_paginate @groups %><br><br>
+
+<table>
+  <tr>
+    <th><%= sortable_header('Name') %></th>
+  </tr>
+  <% @groups.each do |group| %>
+    <tr>
+      <td><%= link_to group.Name, "/groups/#{group.ID}" %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= will_paginate @groups %>
