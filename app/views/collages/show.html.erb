@@ -6,11 +6,15 @@
   <tr>
     <th><%= sortable_header('Artist', 'a.Name') %></th>
     <th><%= sortable_header('Group Name', 'tg.Name') %></th>
+    <th><%= sortable_header('CatalogueNumber', 'tg.CatalogueNumber') %></th>
+    <th><%= sortable_header('Year', 'tg.Year') %></th>
   </tr>
   <% @torrents.each do |torrent| %>
     <tr>
       <td><%= link_to torrent.first, "/artists/#{torrent[1]}" %></td>
       <td><%= link_to torrent.last, "/groups/#{torrent[2]}" %></td>
+      <td><%= torrent[3] %></td>
+      <td><%= torrent[4] %></td>
     </tr>
   <% end %>
 </table>
